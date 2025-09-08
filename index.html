@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyerzz Dance Studio | Professional Dance School in Tamil Nadu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+        :root {
+            --primary: #ff8800;
+            --secondary: #ff0000;
+            --accent: #ff4d94;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f8f9fa;
+            --gray: #2a2a2a;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        html {
+            overflow-x: hidden; /* prevent horizontal overflow from off-canvas elements */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        header.scrolled {
+            padding: 0.7rem 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative; /* allow absolute positioning for hamburger */
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            /* Remove gradient background so text remains readable */
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: currentColor;
+            position: relative;
+            background-clip: initial;
+        }
+        
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 2.5rem;
+            position: relative;
+        }
+        
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+        
+        .nav-link:hover {
+            color: #fff;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none; /* visible only on mobile */
+            cursor: pointer;
+            z-index: 1001;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+            /* No absolute positioning; allow flex to place it */
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Orange/red brand overlay */
+            background: linear-gradient(135deg, rgba(255, 136, 0, 0.85), rgba(255, 0, 0, 0.85));
+            background-blend-mode: overlay;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero-title {
+            font-size: 4.2rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
+            text-transform: none; /* easier to read than all-caps */
+            letter-spacing: 0.5px;
+            color: var(--light); /* solid color for clarity */
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-title span {
+            color: var(--primary); /* brand accent on keyword */
+        }
+        
+        .hero-desc {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 10px 20px rgba(106, 17, 203, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(106, 17, 203, 0.4);
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 8rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--transition);
+            height: 320px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .about-image:hover {
+            transform: perspective(1000px) rotateY(0) scale(1.02);
+        }
+        
+        /* Branches Section */
+        .branches {
+            background-color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .branches::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Remove background image; use a faint gradient texture */
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.03));
+            opacity: 1;
+        }
+        
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            position: relative;
+        }
+        
+        .branch-card {
+            background: linear-gradient(145deg, var(--darker), var(--dark));
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        
+        .branch-card.animated {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .branch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        }
+        
+        .branch-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: transform 0.4s ease, filter 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .branch-card:hover .branch-image {
+            transform: scale(1.03);
+            filter: brightness(1.1);
+        }
+        
+        .branch-content {
+            padding: 2rem;
+        }
+        
+        .branch-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            /* Use normal text color for readability */
+            color: var(--light);
+        }
+        
+        .branch-details {
+            margin-top: 1.5rem;
+        }
+        
+        .branch-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .branch-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+        
+        /* Classes Section */
+        .classes {
+            background-color: var(--darker);
+        }
+        
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .class-card {
+            background: linear-gradient(145deg, var(--dark), var(--darker));
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transform: scale(0.95);
+            opacity: 0;
+        }
+        
+        .class-card.animated {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .class-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .class-image {
+            height: 220px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            transition: transform 0.4s ease, filter 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .class-card:hover .class-image {
+            transform: scale(1.03);
+            filter: brightness(1.1);
+        }
+        
+        .class-content {
+            padding: 2rem;
+        }
+        
+        .class-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            /* Use normal text color for readability */
+            color: var(--light);
+        }
+        
+        .class-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+            color: var(--accent);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(to bottom, var(--dark), var(--darker));
+            position: relative;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Remove image; subtle texture */
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+            opacity: 1;
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            position: relative;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-details {
+            margin-top: 2.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(10px);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: 'Open Sans', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(106, 17, 203, 0.2);
+        }
+        
+        textarea.form-input {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 5rem 0 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            gap: 1.5rem;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(106, 17, 203, 0.4);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 10px 20px rgba(106, 17, 203, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 30px rgba(106, 17, 203, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 10px 20px rgba(106, 17, 203, 0.3);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: 0; /* anchor to right edge */
+                left: auto; /* ensure left is not set */
+                width: 70%;
+                max-width: 360px;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+                transform: translateX(100%); /* fully off-canvas to the right */
+                transition: transform 0.4s ease; /* animate only transform */
+                will-change: transform;
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+            
+            .nav-item {
+                margin: 2rem 0;
+            }
+            
+            .hamburger {
+                display: flex; /* visible on mobile */
+                width: 44px;
+                height: 44px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                padding: 1rem 2rem;
+            }
+            
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .branches-grid, .classes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                margin-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Flyerzz <span>Dance</span></a>
+            
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#branches" class="nav-link">Branches</a></li>
+                <li class="nav-item"><a href="#classes" class="nav-link">Classes</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content" data-aos="fade-up">
+            <h1 class="hero-title">Express Yourself Through <span>Dance</span></h1>
+            <p class="hero-desc">Professional dance training across Tamil Nadu. Join our community and discover the joy of movement with expert instructors.</p>
+            <a href="#contact" class="btn">Enroll Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>Welcome to Flyerzz Dance Studio</h3>
+                    <p>We are a premier dance school with multiple locations across Tamil Nadu. Our mission is to provide high-quality dance education to students of all ages and skill levels.</p>
+                    <p>Our studios are equipped with state-of-the-art facilities and our instructors are professional dancers with years of teaching experience. We offer a variety of dance styles in a supportive and encouraging environment.</p>
+                    <p>Whether you're looking to pursue dance professionally or simply want to enjoy a fun physical activity, Flyerzz Dance Studio is the perfect place for you.</p>
+                    <a href="#classes" class="btn">Explore Classes</a>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Branches Section -->
+    <section class="section branches" id="branches">
+        <div class="container">
+            <h2 class="section-title">Our Branches</h2>
+            <div class="branches-grid">
+                <div class="branch-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="branch-image">
+                    </div>
+                    <div class="branch-content">
+                        <h3 class="branch-title">Gobichettipalayam</h3>
+                        <p>Our flagship location in the heart of Gobichettipalayam, featuring state-of-the-art facilities and the largest selection of classes.</p>
+                        <div class="branch-details">
+                            <div class="branch-detail">
+                                <div class="branch-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <p>Vaasthu Nagar, Gobichettipalayam, Tamil Nadu 638476</p>
+                            </div>
+                            <div class="branch-detail">
+                                <div class="branch-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <p>Opens Saturday, 5 PM</p>
+                            </div>
+                            <div class="branch-detail">
+                                <div class="branch-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <p>097889 99138</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="branch-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="branch-image">
+                    </div>
+                    <div class="branch-content">
+                        <h3 class="branch-title">Kavindapadi</h3>
+                        <p>Our modern Kavindapadi location offers a spacious studio with sprung floors and professional sound systems for the best dance experience.</p>
+                        <div class="branch-details">
+                            <div class="branch-detail">
+                                <div class="branch-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <p>Main Road, Kavindapadi, Tamil Nadu</p>
+                            </div>
+                            <div class="branch-detail">
+                                <div class="branch-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <p>Opens 4pm Friday & Saturday</p>
+                            </div>
+                            <div class="branch-detail">
+                                <div class="branch-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <p>097889 99139</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="branch-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="branch-image">
+                    </div>
+                    <div class="branch-content">
+                        <h3 class="branch-title">Sathyamanagalam</h3>
+                        <p>Our newest location in Sathyamanagalam features a contemporary design with mirrored walls and professional dance flooring.</p>
+                        <div class="branch-details">
+                            <div class="branch-detail">
+                                <div class="branch-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <p>City Center, Sathyamanagalam, Tamil Nadu</p>
+                            </div>
+                            <div class="branch-detail">
+                                <div class="branch-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <p>Opens 5pm Sunday</p>
+                            </div>
+                            <div class="branch-detail">
+                                <div class="branch-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <p>097889 99140</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section class="section classes" id="classes">
+        <div class="container">
+            <h2 class="section-title">Our Classes</h2>
+            <div class="classes-grid">
+                <div class="class-card" data-aos="zoom-in" data-aos-delay="0">
+                    <div class="class-image">
+                    </div>
+                    <div class="class-content">
+                        <h3 class="class-title">Hip-Hop</h3>
+                        <p>Learn the latest urban dance moves and develop your own style with our experienced instructors.</p>
+                        <p class="class-price">₹800/week</p>
+                        <a href="#contact" class="btn">Join Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="class-image">
+                    </div>
+                    <div class="class-content">
+                        <h3 class="class-title">Contemporary Dance</h3>
+                        <p>Express emotions through fluid movements and explore the art of storytelling with your body.</p>
+                        <p class="class-price">₹900/week</p>
+                        <a href="#contact" class="btn">Join Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="class-image">
+                    </div>
+                    <div class="class-content">
+                        <h3 class="class-title">Bharatanatyam</h3>
+                        <p>Connect with India's rich cultural heritage through this classical dance form from Tamil Nadu.</p>
+                        <p class="class-price">₹1000/week</p>
+                        <a href="#contact" class="btn">Join Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="class-image">
+                    </div>
+                    <div class="class-content">
+                        <h3 class="class-title">Ballet</h3>
+                        <p>Develop grace, strength, and precision through the timeless art of classical ballet.</p>
+                        <p class="class-price">₹950/week</p>
+                        <a href="#contact" class="btn">Join Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="class-image">
+                    </div>
+                    <div class="class-content">
+                        <h3 class="class-title">Salsa</h3>
+                        <p>Learn this passionate Latin dance style that combines intricate footwork with rhythmic body movements.</p>
+                        <p class="class-price">₹850/week</p>
+                        <a href="#contact" class="btn">Join Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="class-image">
+                    </div>
+                    <div class="class-content">
+                        <h3 class="class-title">Breakdance</h3>
+                        <p>Master power moves, freezes, and footwork in this dynamic and athletic street dance style.</p>
+                        <p class="class-price">₹900/week</p>
+                        <a href="#contact" class="btn">Join Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Get In Touch</h3>
+                    <p>We'd love to hear from you. Reach out to us for any inquiries about our classes, schedules, or enrollment process.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Main Office</h4>
+                                <p>Vaasthu Nagar, Gobichettipalayam, Tamil Nadu 638476</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Opening Hours</h4>
+                                <p>Opens Saturday, 5 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>097889 99138</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@flyerzzdance.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-input" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-input" required>
+                                <option value="" disabled selected>Select Preferred Branch</option>
+                                <option value="gobichettipalayam">Gobichettipalayam</option>
+                                <option value="kavindapadi">Kavindapadi</option>
+                                <option value="sathyamanagalam">Sathyamanagalam</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="copyright">© 2023 Flyerzz Dance Studio. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 120,
+    easing: 'ease-out-cubic',
+  });
+</script>
+
+    <script>
+        // Navigation functionality
+        const header = document.getElementById('header');
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        // Scroll event for header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const branchCards = document.querySelectorAll('.branch-card');
+            const classCards = document.querySelectorAll('.class-card');
+            
+            branchCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.classList.add('animated');
+                }
+            });
+            
+            classCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.classList.add('animated');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Initial call to check elements in view on page load
+        animateOnScroll();
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
